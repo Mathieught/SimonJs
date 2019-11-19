@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Kanit|Tomorrow&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.editions-eni.fr/Open/download/3cf16f55-809b-44da-8898-6b182eee4595/images/06-44.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simon JS</title>
+</head>
+
+<body>
+    <main>
+        <div id="modal" class="modal">
+            <div id="out" class="blackscreen"></div>
+            <div class="modalregles">
+                <span id="close" class="close">&times;</span>
+                <p>
+                    <h3>OBJECTIF :</h3>
+                    Répéter la séquence de touches lumineuses affichées par le jeu du Simon.
+                    <br>
+                    <br>
+                    <h3>PRINCIPE :</h3>
+                    Le jeu du Simon affiche aléatoirement une séquence de touches lumineuses, produisant simultanément des sons associés à ces touches. Retenez bien la séquence ! C’est ensuite à vous, joueur, de reproduire la séquence pour augmenter votre score.</p>
+            </div>
+        </div>
+        <h1 class="titre">Simon Javascript</h1>
+        <div class="score">
+            <div id="scorebx1" class="scorebox">
+                --
+            </div>
+            <div id="scorebx2" class="scorebox">
+                --
+            </div>
+        </div>
+        <div id="modalbtn" class="reglesbtn">
+            <span class="contentbtn">règles !</span>
+        </div>
+        <div class="gamecontainer">
+            <div id="btnblue" class="boxbtn"></div>
+            <div id="btngreen" class="boxbtn"></div>
+            <div id="btnred" class="boxbtn"></div>
+            <div id="btnyellow" class="boxbtn"></div>
+            <div id="center">
+                <div class="btnstartcontainer">
+                    <div id="btnstart1" class="btnstart"><i class="fas fa-play icon"></i></div>
+                    <div id="btnstart2" class="btnstart"><i class="fas fa-undo-alt icon"></i></div>
+                </div>
+                <div class="btnstartcontainer">
+                    <div class="status">status</div>
+                </div>
+                <div class="btnstartcontainer">
+                    <span class="status">Simon</span>
+                    <span class="status">Vous</span>
+                </div>
+                <div class="btnstartcontainer">
+                    <div class="btnstatus"></div>
+                    <div class="btnstatus"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/b93fd05ef1.js" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+
+</html>
