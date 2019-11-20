@@ -1,9 +1,10 @@
 let on = false; //btn on
 let simon; //ordre jeu simon
 let simonOrder = [];
-let player = []; // ordre du joueur
+let playerScore = []; // ordre du joueur
 let roundCount = 0; // count lvl
-let turn;// savoir a qui est le tour
+let playerCount = 0; // count lvl
+// let turn = 1;// savoir a qui est le tour
 let match; // check bonne reponse ou non
 let simonTurn = true; // savoir quand le joueur ou simon joue
 let interval;// interval fonction flash lumiere
@@ -13,6 +14,7 @@ let lose; // win or lose
 
 //SELECTEUR
 const $scorebx1 = document.getElementById('scorebx1') //select count turn box
+const $scorebx2 = document.getElementById('scorebx2') //select count turn box
 
 const $btnb = document.getElementById('btnblue');
 const $btng = document.getElementById('btngreen');
@@ -34,24 +36,27 @@ const $btntest = document.getElementById('btnblue');
 $btnstart.addEventListener('click', () => {
     on = true;
     clearInterval(interval);
-    if( on === true){
+    if(on === true && simonTurn === true){
         play();
     }
     
 });
 
+//RESETTTT
 $btnreset.addEventListener('click', () => {
     $btnreset.classList.add('btnactivecolor');
     setTimeout(function() {
-        $scorebx1.innerHTML = "--" ;
+        $scorebx1.innerHTML = "--";
+        $scorebx2.innerHTML = "--";
         roundCount = 0 ;
+        playerCount = 0;
         on = false;
         if(on === false){
             console.clear();
             simon = [];
             simonOrder = [];
-            simonTurn = false;
-            if(simonTurn === false){
+            simonTurn = true;
+            if(simonTurn === true){
                 $btnSimon.classList.remove('btnstatuscolor');
             }
             clearInterval();
@@ -69,13 +74,16 @@ $btnreset.addEventListener('click', () => {
 
 function play() {
     $btnstart.classList.add('btnactivecolor');
-    turn = 1 ;
-    $scorebx1.innerHTML = 1;
+    roundCount = 1;
+    $scorebx1.innerHTML = roundCount;
+    $scorebx2.innerHTML = playerCount;
     console.log(on); 
-    if(simonTurn == true){
+    while(playerCount + 1 === roundCount){ //A TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+        if(simonTurn == true){
         addColor();
     }
         interval = setInterval(autorun, 1500);
+    }
 }
 function addColor(){
     $btnSimon.classList.add('btnstatuscolor');
@@ -95,19 +103,19 @@ function autorun(){
 };
 
 function flash(){
-    if(simon == 0){
+    if(simon== 0){
             $btnb.classList.add('activated');
         setTimeout(function (){
             $btnb.classList.remove('activated');
         },1000);
     }
-    if(simon == 1){
+    if(simon== 1){
             $btng.classList.add('activated');
         setTimeout(function (){
             $btng.classList.remove('activated');
         },1000);
     }
-    if(simon == 2){
+    if(simon== 2){
             $btnr.classList.add('activated');
         setTimeout(function (){
             $btnr.classList.remove('activated');
