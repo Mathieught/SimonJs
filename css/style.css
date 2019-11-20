@@ -234,3 +234,7 @@ span.close{
     bottom: 0;
     box-shadow: 0 0 0 #07886a;
 }
+
+.btnstatuscolor{
+    background-color: green;
+}

@@ -1,13 +1,14 @@
 let on = false; //btn on
-let simon = []; //ordre jeu simon
+let simon; //ordre jeu simon
+let simonOrder = [];
 let player = []; // ordre du joueur
 let roundCount = 0; // count lvl
 let turn;// savoir a qui est le tour
 let match; // check bonne reponse ou non
-let simonTurn; // savoir quand le joueur ou simon joue
+let simonTurn = true; // savoir quand le joueur ou simon joue
 let interval;// interval fonction flash lumiere
 let noise; // sounds
-let win; // win or lose
+let lose; // win or lose
 
 
 //SELECTEUR
@@ -21,6 +22,8 @@ const $btny = document.getElementById('btnyellow');
 
 const $btnstart = document.getElementById('btnstart1'); //select play button
 const $btnreset = document.getElementById('btnstart2');//select reset button
+const $btnSimon = document.getElementById('btnStatusSimon');//select reset button
+const $btnPlayer = document.getElementById('btnStatusPlayer');//select reset button
 
 const $btntest = document.getElementById('btnblue');
 
@@ -46,13 +49,17 @@ $btnreset.addEventListener('click', () => {
         if(on === false){
             console.clear();
             simon = [];
+            simonOrder = [];
+            simonTurn = false;
+            if(simonTurn === false){
+                $btnSimon.classList.remove('btnstatuscolor');
+            }
             clearInterval();
         }
         console.log(on);
         $btnreset.classList.remove('btnactivecolor');
         $btnstart.classList.remove('btnactivecolor');
     }, 600);
-    
 });
 
 
@@ -65,20 +72,27 @@ function play() {
     turn = 1 ;
     $scorebx1.innerHTML = 1;
     console.log(on); 
+    if(simonTurn == true){
+        addColor();
+    }
         interval = setInterval(autorun, 1500);
-        console.log(interval);
 }
-
+function addColor(){
+    $btnSimon.classList.add('btnstatuscolor');
+    $btnPlayer.classList.remove('btnstatuscolor');
+};
 function autorun(){
     if(on === true){
     for (i = 0; i < 1; i++) {
         simon = [];
         simon.push(Math.floor((Math.random() * 4)));
+        simonOrder.push(simon);
         console.log(simon);
+        console.log(simonOrder);
         flash();
     }
 }
-}
+};
 
 function flash(){
     if(simon == 0){
@@ -105,7 +119,7 @@ function flash(){
             $btny.classList.remove('activated');
         },1000);
     }
-}
+};
 
 
 
