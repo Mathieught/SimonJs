@@ -75,16 +75,17 @@ $btnreset.addEventListener('click', () => {
 function play() {
     $btnstart.classList.add('btnactivecolor');
     roundCount = 1;
+    playerCount = 0;
     $scorebx1.innerHTML = roundCount;
     $scorebx2.innerHTML = playerCount;
     console.log(on); 
-    while(playerCount + 1 === roundCount){ //A TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+    while(playerCount === roundCount){ //A TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
         if(simonTurn == true){
         addColor();
     }
         interval = setInterval(autorun, 1500);
     }
-}
+};
 function addColor(){
     $btnSimon.classList.add('btnstatuscolor');
     $btnPlayer.classList.remove('btnstatuscolor');
