@@ -35,7 +35,10 @@ const $btntest = document.getElementById('btnblue');
 // onclick start btn
 $btnstart.addEventListener('click', () => {
     on = true;
-    clearInterval(interval);
+    roundCount = 1;
+    clearTimeout(interval);
+    $scorebx1.innerHTML = roundCount;
+    $scorebx2.innerHTML = playerCount;
     if(on === true && simonTurn === true){
         play();
     }
@@ -54,35 +57,37 @@ $btnreset.addEventListener('click', () => {
 
 function play() {
     $btnstart.classList.add('btnactivecolor');
-    roundCount = 1;
-
-    $scorebx1.innerHTML = roundCount;
-    $scorebx2.innerHTML = playerCount;
     console.log(on); 
         if(simonTurn === true){
         addColor();
-        interval = setInterval(autorun, 1500);
-    }
-    if(playerCount >= roundCount){
-        clearInterval();
-        simonTurn = false;
-        if(simonOrder === false){
-            clearInterval(interval);
-            console.log(interval);
-        }
-        console.log('marche', simonTurn)
+        interval = setTimeout(autorun, 1500);
     };
 };
 function addColor(){
     $btnSimon.classList.add('btnstatuscolor');
     $btnPlayer.classList.remove('btnstatuscolor');
 };
+function changeTurn(){
+    if(playerCount >= roundCount){
+        simonTurn = false;
+        if(simonOrder = false){
+            PlayerTurn = true ;
+            clearTimeout(interval);
+        }
+        console.log('marche', simonTurn)
+    };
+}
 function autorun(){
+    on = true;
+    changeTurn();
     if(on === true && simonTurn === true){
         x = roundCount;
         playerCount++; 
+        $scorebx1.innerHTML = roundCount;
+        $scorebx2.innerHTML = playerCount;
         console.log(playerCount);
     for (i = 0; i < x; i++) {
+        console.log('marche', simonTurn)
         simon = [];
         simon.push(Math.floor((Math.random() * 4)));
         // simonOrder.push(simon);
@@ -122,7 +127,6 @@ function flash(){
 
 
 function resetGame(){
-    
     setTimeout(function() {
         $scorebx1.innerHTML = "--";
         $scorebx2.innerHTML = "--";
