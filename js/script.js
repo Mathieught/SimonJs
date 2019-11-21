@@ -39,32 +39,12 @@ $btnstart.addEventListener('click', () => {
     if(on === true && simonTurn === true){
         play();
     }
-    
 });
 
 //RESETTTT
 $btnreset.addEventListener('click', () => {
     $btnreset.classList.add('btnactivecolor');
-    setTimeout(function() {
-        $scorebx1.innerHTML = "--";
-        $scorebx2.innerHTML = "--";
-        roundCount = 0 ;
-        playerCount = 0;
-        on = false;
-        if(on === false){
-            console.clear();
-            simon = [];
-            simonOrder = [];
-            simonTurn = true;
-            if(simonTurn === true){
-                $btnSimon.classList.remove('btnstatuscolor');
-            }
-            clearInterval();
-        }
-        console.log(on);
-        $btnreset.classList.remove('btnactivecolor');
-        $btnstart.classList.remove('btnactivecolor');
-    }, 600);
+    resetGame();
 });
 
 
@@ -75,27 +55,37 @@ $btnreset.addEventListener('click', () => {
 function play() {
     $btnstart.classList.add('btnactivecolor');
     roundCount = 1;
-    playerCount = 0;
+
     $scorebx1.innerHTML = roundCount;
     $scorebx2.innerHTML = playerCount;
     console.log(on); 
-    while(playerCount === roundCount){ //A TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
-        if(simonTurn == true){
+        if(simonTurn === true){
         addColor();
-    }
         interval = setInterval(autorun, 1500);
     }
+    if(playerCount >= roundCount){
+        clearInterval();
+        simonTurn = false;
+        if(simonOrder === false){
+            clearInterval(interval);
+            console.log(interval);
+        }
+        console.log('marche', simonTurn)
+    };
 };
 function addColor(){
     $btnSimon.classList.add('btnstatuscolor');
     $btnPlayer.classList.remove('btnstatuscolor');
 };
 function autorun(){
-    if(on === true){
-    for (i = 0; i < 1; i++) {
+    if(on === true && simonTurn === true){
+        x = roundCount;
+        playerCount++; 
+        console.log(playerCount);
+    for (i = 0; i < x; i++) {
         simon = [];
         simon.push(Math.floor((Math.random() * 4)));
-        simonOrder.push(simon);
+        // simonOrder.push(simon);
         console.log(simon);
         console.log(simonOrder);
         flash();
@@ -131,10 +121,29 @@ function flash(){
 };
 
 
-
-
-
-
+function resetGame(){
+    
+    setTimeout(function() {
+        $scorebx1.innerHTML = "--";
+        $scorebx2.innerHTML = "--";
+        roundCount = 0 ;
+        playerCount = 0;
+        on = false;
+        if(on === false){
+            console.clear();
+            simon = [];
+            simonOrder = [];
+            simonTurn = true;
+            if(simonTurn === true){
+                $btnSimon.classList.remove('btnstatuscolor');
+            }
+            clearInterval();
+        }
+        console.log(on);
+        $btnreset.classList.remove('btnactivecolor');
+        $btnstart.classList.remove('btnactivecolor');
+    }, 500);
+};
 
 
 
