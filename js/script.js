@@ -7,6 +7,7 @@ let playerCount = 0; // count lvl
 // let turn = 1;// savoir a qui est le tour
 let match; // check bonne reponse ou non
 let simonTurn = true; // savoir quand le joueur ou simon joue
+let PlayerTurn = false;
 let interval;// interval fonction flash lumiere
 let noise; // sounds
 let lose; // win or lose
@@ -20,6 +21,10 @@ const $btnb = document.getElementById('btnblue');
 const $btng = document.getElementById('btngreen');
 const $btnr = document.getElementById('btnred');
 const $btny = document.getElementById('btnyellow');
+let $0 = document.getElementsByClassName('.0');
+let $1 = document.getElementsByClassName('.1');
+let $2 = document.getElementsByClassName('.2');
+let $3 = document.getElementsByClassName('.3');
 
 
 const $btnstart = document.getElementById('btnstart1'); //select play button
@@ -35,7 +40,8 @@ const $btntest = document.getElementById('btnblue');
 // onclick start btn
 $btnstart.addEventListener('click', () => {
     on = true;
-    roundCount = 1;
+    roundCount = 1
+    ;
     clearTimeout(interval);
     $scorebx1.innerHTML = roundCount;
     $scorebx2.innerHTML = playerCount;
@@ -49,8 +55,6 @@ $btnreset.addEventListener('click', () => {
     $btnreset.classList.add('btnactivecolor');
     resetGame();
 });
-
-
 
 // FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION 
 // FUNCTION PLAY JOUER JOUER PLAY JOUER PLAY JOUER JOUER JOUER JOUER JOUER PLAY
@@ -70,11 +74,52 @@ function addColor(){
 function changeTurn(){
     if(playerCount >= roundCount){
         simonTurn = false;
-        if(simonOrder = false){
+        if(simonTurn = false){
             PlayerTurn = true ;
             clearTimeout(interval);
-        }
+        };
+        console.log(PlayerTurn);
         console.log('marche', simonTurn)
+        if(on === true && simonTurn === false && PlayerTurn === false){
+            $btnb.addEventListener('click', () => {
+                $0 = 0;
+                if($0 === 0){
+                    playerScore.push($0);
+                    console.log(playerScore);
+                    $btnb.classList.add('activated');
+                    setTimeout(function (){
+                        $btnb.classList.remove('activated');
+                    },1000);
+                };
+            });
+            $btng.addEventListener('click', () => {
+                $1 = 1;
+                if($1 === 1){
+                    $btng.classList.add('activated');
+                    setTimeout(function (){
+                        $btng.classList.remove('activated');
+                    },1000);
+                };
+            });
+            $btnr.addEventListener('click', () => {
+                $2 = 2;
+                if($2 === 2){
+                    $btnr.classList.add('activated');
+                    setTimeout(function (){
+                        $btnr.classList.remove('activated');
+                    },1000);
+                };
+            });
+            $btny.addEventListener('click', () => {
+                $3 = 3;
+                if($3 === 3){
+                    $btny.classList.add('activated');
+                    setTimeout(function (){
+                        $btny.classList.remove('activated');
+                    },1000);
+                }
+            });
+        };
     };
 }
 function autorun(){
@@ -99,19 +144,19 @@ function autorun(){
 };
 
 function flash(){
-    if(simon== 0){
+    if(simon == 0){
             $btnb.classList.add('activated');
         setTimeout(function (){
             $btnb.classList.remove('activated');
         },1000);
     }
-    if(simon== 1){
+    if(simon == 1){
             $btng.classList.add('activated');
         setTimeout(function (){
             $btng.classList.remove('activated');
         },1000);
     }
-    if(simon== 2){
+    if(simon == 2){
             $btnr.classList.add('activated');
         setTimeout(function (){
             $btnr.classList.remove('activated');
