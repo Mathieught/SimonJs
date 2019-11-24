@@ -11,8 +11,12 @@ let interval;// interval fonction flash lumiere
 let noise; // sounds
 let lose; // win or lose
 
-
 //SELECTEUR
+const audio1 = new Audio('../sounds/do.wav');
+const audio2 = new Audio('../sounds/re.wav');
+const audio3 = new Audio('../sounds/mi.wav');
+const audio4 = new Audio('../sounds/fa.wav');
+
 const $scorebx1 = document.getElementById('scorebx1') //select count turn box
 const $scorebx2 = document.getElementById('scorebx2') //select count turn box
 
@@ -45,7 +49,7 @@ $btnstart.addEventListener('click', () => {
     $scorebx1.innerHTML = roundCount;
     $scorebx2.innerHTML = playerCount;
     if(on === true && simonTurn === true){
-        play();
+        playGame();
     }
 });
 
@@ -58,7 +62,7 @@ $btnreset.addEventListener('click', () => {
 // FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION FUNCTION 
 // FUNCTION PLAY JOUER JOUER PLAY JOUER PLAY JOUER JOUER JOUER JOUER JOUER PLAY
 
-function play() {
+function playGame() {
     $btnstart.classList.add('btnactivecolor');
     console.log(on); 
         if(simonTurn === true){
@@ -80,7 +84,7 @@ function changeTurn(){
         };
         if(simonTurn == true && PlayerTurn == false){
             roundCount++;
-            play();
+            playGame();
         }
         console.log(PlayerTurn);
         console.log('marche', simonTurn)
@@ -115,6 +119,7 @@ function Player(){
                 playerScore.push($0);
                 console.log(playerScore);
                 $btnb.classList.add('activated');
+                audio1.play();
                 setTimeout(function (){
                     $btnb.classList.remove('activated');
                 },1000);
@@ -126,6 +131,7 @@ function Player(){
                 playerScore.push($1);
                 console.log(playerScore);
                 $btng.classList.add('activated');
+                audio2.play();
                 setTimeout(function (){
                     $btng.classList.remove('activated');
                 },1000);
@@ -137,6 +143,7 @@ function Player(){
                 playerScore.push($2);
                 console.log(playerScore);
                 $btnr.classList.add('activated');
+                audio3.play();
                 setTimeout(function (){
                     $btnr.classList.remove('activated');
                 },1000);
@@ -148,6 +155,7 @@ function Player(){
                 playerScore.push($3);
                 console.log(playerScore);
                 $btny.classList.add('activated');
+                audio4.play();
                 setTimeout(function (){
                     $btny.classList.remove('activated');
                 },1000);
@@ -161,7 +169,7 @@ function match(){
         PlayerTurn = false;
         simonTurn = true;
         if(simonTurn = true){
-            play();
+            playGame();
         }
         console.log(PlayerTurn);
         console.log(simonTurn);
@@ -170,24 +178,28 @@ function match(){
 function flash(){
     if(simon == 0){
             $btnb.classList.add('activated');
+            audio1.play();
         setTimeout(function (){
             $btnb.classList.remove('activated');
         },1000);
     }
     if(simon == 1){
             $btng.classList.add('activated');
+            audio2.play();
         setTimeout(function (){
             $btng.classList.remove('activated');
         },1000);
     }
     if(simon == 2){
             $btnr.classList.add('activated');
+            audio3.play();
         setTimeout(function (){
             $btnr.classList.remove('activated');
         },1000);
     }
     if(simon == 3){
             $btny.classList.add('activated');
+            audio4.play();
         setTimeout(function (){
             $btny.classList.remove('activated');
         },1000);
